@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { Message } from './Statistics.styled';
 
 const Notification = ({ message }) => {
-  return <p>{message}</p>;
+  return <Message>{message}</Message>;
 };
 
 Notification.propTypes = {

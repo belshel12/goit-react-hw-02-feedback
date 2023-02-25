@@ -3,6 +3,8 @@ import FeedbackOptions from 'components/FeedbackOptions';
 import Section from 'components/Section';
 import Statistics from 'components/Statistics';
 import Notification from 'components/Statistics/Notification';
+import { GlobalStyle } from 'components/GlobalStyle';
+import { Layout } from 'components/Layout.styled';
 
 export class App extends Component {
   state = {
@@ -37,7 +39,7 @@ export class App extends Component {
     const total = this.countTotalFeedback();
     const percentAge = (this.state.good / total) * 100;
 
-    return percentAge.toFixed();
+    return Math.round(percentAge);
   };
 
   render() {
@@ -51,16 +53,7 @@ export class App extends Component {
     const amount = countTotalFeedback();
 
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
+      <Layout>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={optionKeys}
@@ -81,7 +74,8 @@ export class App extends Component {
             <Notification message="There is no feedback" />
           )}
         </Section>
-      </div>
+        <GlobalStyle />
+      </Layout>
     );
   }
 }
